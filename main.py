@@ -4,8 +4,9 @@ import validators
 import secrets
 
 from configparser import ConfigParser
-from fastapi import FastAPI, HTTPException, Depends
+from fastapi import FastAPI, HTTPException, Depends, Request
 from fastapi.staticfiles import StaticFiles
+from fastapi.responses import RedirectResponse
 from sqlalchemy.orm import Session
 
 from . import schemas, models
@@ -49,6 +50,10 @@ def get_db():
     finally:
         db.close()
 
+def raise_not_found(request):
+    message = f"URL '{request.url}' doesn't exist"
+    raise HTTPException(status_code=404, detail=message)
+
 @app.get("/")
 def read_root():
     return "Welcome to the URL shortener API :)"
@@ -71,5 +76,21 @@ def create_url(url: schemas.URLBase, db: Session = Depends(get_db)):
     db_url.admin_url = secret_key
 
     return db_url
+
+@app.get("/{url_key}", tags=["shortener"])
+def forward_to_target_url(
+        url_key: str,
+        request: Request,
+        db: Session = Depends(get_db)
+    ):
+    db_url = (
+        db.query(models.URL)
+        .filter(models.URL.key == url_key, models.URL.is_active)
+        .first()
+    )
+    if db_url:
+        return RedirectResponse(db_url.target_url)
+    else:
+        raise_not_found(request)
 
 app.mount("/home", StaticFiles(directory="/home/ubuntu/urlshortener/app/ui", html=True), name="ui")
