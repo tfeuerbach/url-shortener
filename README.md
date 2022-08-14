@@ -20,7 +20,7 @@
   <p align="center">
     Python based url shortening service.
     <br />
-    <a href="http://myshortener.link/docs"><strong>Explore the API here»</strong></a>
+    <a href="http://myshortened.link/docs"><strong>Explore the API here»</strong></a>
     <br />
     <br />
     <a href="https://github.com/tfeuerbach/url_shortener">View Demo</a>
