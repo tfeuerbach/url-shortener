@@ -87,7 +87,7 @@ def forward_to_target_url(
     else:
         raise_not_found(request)
 
-@app.get("/admin/{secret_key}", response_model=schemas.URLInfo, tags=["admin info"])
+@app.get("/admin/{secret_key}", response_model=schemas.URLInfo, name="admin info", tags=["admin info"])
 def get_url_info(secret_key: str, request: Request, db: Session = Depends(get_db)):
     if db_url := db_functions.get_db_url_by_secret_key(db, secret_key=secret_key):
         return get_admin_info(db_url)
