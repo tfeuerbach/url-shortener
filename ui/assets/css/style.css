@@ -228,7 +228,7 @@ a:hover, a:focus {
 		background-color: #428bca;
 	}
 
-	.link-email:hover~.scrunch:after {
+	.link-docs:hover~.scrunch:after {
 		-webkit-animation: one 1s .25s linear forwards;
 				animation: one 1s .25s linear forwards;
 	}
