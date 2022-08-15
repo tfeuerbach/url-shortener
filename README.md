@@ -187,7 +187,7 @@ Resources used for the creation of this application.
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/tfeuerbach
 [product-screenshot]: images/screenshot.png
-[Python]: https://img.shields.io/badge/python-000000?style=for-the-badge&logo=nextdotjs&logoColor=white
+[Python]: https://img.shields.io/badge/python-000000?style=for-the-badge&logo=python&logoColor=white
 [Python-url]: https://python.org/
 [React.js]: https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
 [React-url]: https://reactjs.org/
