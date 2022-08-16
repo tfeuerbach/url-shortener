@@ -46,6 +46,7 @@ app = FastAPI(title="URL Shortener",
                   "url": api_config["license_url"],
               },
               openapi_tags=tags_metadata,
+              swagger_ui_parameters={"defaultModelsExpandDepth": -1} # Hides Schema in UI
              )
 models.Base.metadata.create_all(bind=engine)
 
