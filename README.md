@@ -75,6 +75,9 @@ This section should list any major frameworks/libraries used to bootstrap your p
 <!-- GETTING STARTED -->
 ## Getting Started
 
+Visit http://myshortened.link to view and test the API.
+
+Command Line tool available at url_shortener/cli.
 
 ### Prerequisites
 
@@ -85,8 +88,6 @@ This is an example of how to list things you need to use the software and how to
   ```
 
 ### Installation
-
-_Below is an example of how you can instruct your audience on installing and setting up your app. This template doesn't rely on any external dependencies or services._
 
 1. Clone the repo
    ```sh

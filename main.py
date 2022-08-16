@@ -41,10 +41,6 @@ app = FastAPI(title="URL Shortener",
                   "name": api_config["name"],
                   "url": api_config["url"],
               },
-              license_info={
-                  "name": api_config["license_name"],
-                  "url": api_config["license_url"],
-              },
               openapi_tags=tags_metadata,
               swagger_ui_parameters={"defaultModelsExpandDepth": -1} # Hides Schema in UI
              )
