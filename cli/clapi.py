@@ -30,7 +30,7 @@ def delete_url(admin_url: str):
 
 if __name__ == '__main__':
     parser = ArgumentParser(description='A command line tool for interacting with the myshortened.link API')
-    parser.add_argument('-g', '--get', action='store', help='shows a preview of the data.')
+    parser.add_argument('-g', '--get', action='store', help='retrieves the shortened URL for a given URL (http(s)://www.something.com).')
     parser.add_argument('-s', '--show', action='store', help='view information about your shortened URL. Takes the Admin URL as the argument.')
     parser.add_argument('-d', '--delete', action='store', help='deletes the shortened URL from the database. Takes the Admin URL as the argument.')
 
@@ -47,7 +47,7 @@ if __name__ == '__main__':
               f"Admin URL --> {response['admin_url']}\n"
               f"Secret Key -> {secret_key.group(0)}\n")
 
-    if args.show:
+    elif args.show:
         response = view_url(args.show)
 
         print(f"\n"
@@ -61,7 +61,7 @@ if __name__ == '__main__':
               f"Your shortened URL has been clicked {response['clicks']} time(s)."
               f"\n")
 
-    if args.delete:
+    elif args.delete:
         target_url = view_url(args.delete)
         response = delete_url(args.delete)
 
@@ -71,4 +71,4 @@ if __name__ == '__main__':
     else:
         f = Figlet(font='doom')
         print(f.renderText('url    shortener'))
-        print('Use the -h or --help flags for help')    
+        print('Use the -h or --help flags for help')

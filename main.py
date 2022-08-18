@@ -67,7 +67,9 @@ def get_admin_info(db_url: models.URL) -> schemas.URLInfo:
 
 @app.post("/url", response_model=schemas.URLInfo, tags=["shortener"])
 def create_url(url: schemas.URLBase, db: Session = Depends(get_db)):
+    # Validators is picky when given url (requires protocol)
     if not validators.url(url.target_url):
+        # TODO: Make more flexible
         raise_bad_request(message="Your provided URL is not valid")
     
     db_url = db_functions.create_db_url(db=db, url=url)
