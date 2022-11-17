@@ -1,6 +1,7 @@
 # app/db_functions.py
 
 from sqlalchemy.orm import Session
+from datetime import datetime
 
 from . import hasher, models, schemas
 
@@ -9,7 +10,18 @@ def create_db_url(db: Session, url: schemas.URLBase) -> models.URL:
     key = hasher.create_unique_hash(db)
     secret_key = f"{key}_{hasher.create_hash(length=8)}"
     db_url = models.URL(
-        target_url=url.target_url, key=key, secret_key=secret_key
+        target_url=url.target_url, key=key, secret_key=secret_key, timestamp=datetime.now()
+    )
+    db.add(db_url)
+    db.commit()
+    db.refresh(db_url)
+    return db_url
+
+def create_db_url_2(db: Session, url: schemas.URLBase) -> models.URL:
+    key = hasher.create_unique_hash_2(db)
+    secret_key = f"{key}_{hasher.create_hash(length=8)}"
+    db_url = models.URL(
+        target_url=url.target_url, key=key, secret_key=secret_key, timestamp=datetime.now()
     )
     db.add(db_url)
     db.commit()

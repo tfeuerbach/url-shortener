@@ -1,5 +1,6 @@
 # app/schemas.py
 
+from datetime import datetime
 from pydantic import BaseModel
 
 class URLBase(BaseModel):
@@ -8,6 +9,7 @@ class URLBase(BaseModel):
 class URL(URLBase):
     is_active: bool
     clicks: int
+    timestamp: datetime
 
     class Config:
         orm_mode = True

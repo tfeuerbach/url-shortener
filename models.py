@@ -1,6 +1,6 @@
 # app/models.py
 
-from sqlalchemy import Boolean, Column, Integer, String
+from sqlalchemy import Boolean, Column, Integer, String, DateTime
 
 from .database import Base
 
@@ -9,6 +9,7 @@ class URL(Base):
 
     id = Column(Integer, primary_key=True)
     key = Column(String, unique=True, index=True)
+    timestamp = Column(DateTime, index=True)
     secret_key = Column(String, unique=True, index=True)
     target_url = Column(String, index=True)
     is_active = Column(Boolean, default=True)
