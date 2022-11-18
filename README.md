@@ -82,7 +82,7 @@ Command Line tool available at url_shortener/cli.
    python clapi.py
    ```
 
-To host your own, edit the config to point to 127.0.0.1:8000.
+To host your own, edit the config to point to 127.0.0.1:8000 and run:
 
    ```sh
    uvicorn app.main:app --reload   
